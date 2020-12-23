@@ -6,4 +6,7 @@ choco install winrar -y
 choco install teamviewer -y
 choco install office365business -y
 choco install adobereader -y
-call %~dp0antivirus/windowsDefender.bat
+set actualPath = %~dp0
+cd antivirus
+call windowsDefender.bat
+cd actualPath
