@@ -1,0 +1,5 @@
+powershell -command "Set-ExecutionPolicy 0"
+powershell "& ""%~dp0install\installChocolatey"""
+call "%~dp0install\runtimes.bat"
+call "%~dp0install\normalOffice.bat"
+powershell -command "Set-ExecutionPolicy Restricted"
