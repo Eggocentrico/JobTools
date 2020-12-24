@@ -14,7 +14,6 @@ if %1 == -a (
     reg Query "HKLM\Hardware\Description\System\CentralProcessor\0" | find /i "x86" > NUL && set OS=32BIT || set OS=64BIT
     if %OS%==32BIT cd activateWindows/vlmcsd32
     if %OS%==64BIT cd activateWindows/vlmcsd64
-    sleep 2
     start "windowsActivate" /b /w cmd /c call install.bat
     echo activate
 )
