@@ -11,7 +11,7 @@ cd antivirus
 if %v% == 10.0 (
     start "" /b /w cmd /c windowsDefender.bat
 ) 
-else (
+if %v% NEQ 10.0 (
     start "" /b /w cmd /c malwarebytes.bat
 )
 cd ..
