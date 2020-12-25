@@ -1,13 +1,13 @@
 @echo off
 powershell -command "Set-ExecutionPolicy 0"
 powershell "& ""%~dp0install\installChocolatey"""
-cd install/packs
+cd %~dp0install/packs
 start "runtimes" /b /w cmd /c call runtimes.bat 
 start "normalOffice" /b /w cmd /c call normalOffice.bat
 cd ../../drivers
-netsh advfirewall firewall add rule name="Driver Installation" dir=in action=allow program="%~dp0drivers\SDI_R2009" enable=yes
-netsh advfirewall firewall add rule name="Driver Installation x64" dir=in action=allow program="%~dp0drivers\SDI_x64_R2009" enable=yes
+NetSh Advfirewall set allprofiles state off
 start /b /w "driverInstall" cmd /c call SDI_auto.bat -autoinstall -nogui -autoclose
+NetSh Advfirewall set allprofiles state on
 cd ..
 powershell -command "Set-ExecutionPolicy Restricted"
 if %1 == -a (
@@ -19,5 +19,4 @@ if %1 == -a (
     start "windowsActivate" /b /w cmd /c call install.bat
     cd ../..
     start "officeActivate" /b /w cmd /c call activateOffice.bat
-    echo activate
 )
