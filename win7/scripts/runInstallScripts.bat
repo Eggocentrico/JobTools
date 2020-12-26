@@ -2,6 +2,7 @@
 cd ../prerequisites
 start /w "Net4.5 Install" NDP452-KB2901907-x86-x64-AllOS-ENU.exe /q
 powershell -file "Install-WMF5.1.ps1"
+cd ../scripts
 powershell -command "Set-ExecutionPolicy 0"
 powershell "& ""%~dp0install\installChocolatey"""
 cd %~dp0install/packs
